@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="flourweight">Flour weight</string>
+    <string name="hydration">Hydration</string>
+    <string name="prefermentpercentage">Preferment Precentage</string>
+</resources>

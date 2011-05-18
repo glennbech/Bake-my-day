@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <TextView
+            android:text="@string/flourweight"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    <SeekBar android:id="@+id/sbFlourWegiht" android:layout_width="fill_parent"
+             android:layout_height="wrap_content" android:progress="40"/>
+
+    <TextView
+            android:text="@string/hydration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <SeekBar android:id="@+id/sbHydration" android:layout_width="fill_parent"
+             android:layout_height="wrap_content" android:progress="65"/>
+
+
+    <TextView
+            android:text="@string/prefermentpercentage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <SeekBar android:id="@+id/sbPrefermentPercentage" android:layout_width="fill_parent"
+             android:layout_height="wrap_content" android:progress="30"/>
+
+
+</LinearLayout>
+
