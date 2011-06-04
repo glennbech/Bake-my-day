@@ -2,6 +2,17 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="flourweight">Flour weight</string>
-    <string name="hydration">Hydration</string>
+    <string name="hydration">Liquid</string>
     <string name="prefermentpercentage">Preferment Precentage</string>
+    <string name="titlePreferment">Preferment</string>
+    <string name="prefermentWater">Water</string>
+    <string name="prefermentFlour">Flour</string>
+    <string name="doughg">Dough</string>
+    <string name="doughLiquid">Liquid</string>
+    <string name="doughFlour">Flour</string>
+    <string name="fatWeight">Fats (Oil/Butter)</string>
+    <string name="saltWeght">Salt</string>
+    <string name="dougSalt">Salt</string>
+    <string name="doughFat">Fats</string>
+    <string name="prefermentLeaven">Leaven (yest/sourdough starter)</string>
 </resources>

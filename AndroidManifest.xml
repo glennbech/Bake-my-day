@@ -3,7 +3,9 @@
       package="com.glennbech.prefermentz"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="Prefermentz" android:icon="@drawable/icon">
+    <application android:label="Prefermentz" android:icon="@drawable/icon" android:debuggable="true">
+        <activity android:name=".ShowRecipeActivity" />
+
         <activity android:name="Calculator"
                   android:label="@string/app_name">
             <intent-filter>
