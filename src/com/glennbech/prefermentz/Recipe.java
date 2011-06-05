@@ -7,31 +7,36 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable {
 
-
     private float flourWeight;
-    private float hydration;
-    private float fats;
-    private float salt;
-    private float prefermentPercentage;
-    private float preferrmentHydrarion;
+    private float bpWater;
+    private float bpFats;
+    private float bpSalt;
+    private float bpYeast;
 
-    public Recipe(float flourWeight, float hydration, float fats, float salt, float prefermentPercentage, float preferrmentHydrarion) {
+    private float flourWeightPreferment;
+    private float bpSaltPreferment;
+    private float bpWaterPreferment;
+    private float bpYeastPreferment;
+
+    public Recipe(float flourWeight, float bpWater, float bpFats, float bpSalt, float bpYeast) {
         this.flourWeight = flourWeight;
-        this.hydration = hydration;
-        this.fats = fats;
-        this.salt = salt;
-        this.prefermentPercentage = prefermentPercentage;
-        this.preferrmentHydrarion = preferrmentHydrarion;
+        this.bpWater = bpWater;
+        this.bpFats = bpFats;
+        this.bpSalt = bpSalt;
+        this.bpYeast = bpYeast;
     }
 
-    public float getPrefermentWeight() {
-        return flourWeight * prefermentPercentage / 100;
+    public Recipe(float flourWeight, float bpWater, float bpFats, float bpSalt, float bpYeast, float flourWeightPreferment, float bpSaltPreferment, float bpWaterPreferment, float bpYeastPreferment) {
+        this.flourWeight = flourWeight;
+        this.bpWater = bpWater;
+        this.bpFats = bpFats;
+        this.bpSalt = bpSalt;
+        this.bpYeast = bpYeast;
+        this.flourWeightPreferment = flourWeightPreferment;
+        this.bpSaltPreferment = bpSaltPreferment;
+        this.bpWaterPreferment = bpWaterPreferment;
+        this.bpYeastPreferment = bpYeastPreferment;
     }
-
-    public float getPrefermentWater() {
-        return getPrefermentWeight() * preferrmentHydrarion / 100;
-    }
-
 
     public float getFlourWeight() {
         return flourWeight;
@@ -41,48 +46,68 @@ public class Recipe implements Serializable {
         this.flourWeight = flourWeight;
     }
 
-    public float getHydration() {
-        return hydration;
+    public float getBpWater() {
+        return bpWater;
     }
 
-    public void setHydration(float hydration) {
-        this.hydration = hydration;
+    public void setBpWater(float bpWater) {
+        this.bpWater = bpWater;
     }
 
-    public float getPrefermentPercentage() {
-        return prefermentPercentage;
+    public float getBpFats() {
+        return bpFats;
     }
 
-    public void setPrefermentPercentage(float prefermentPercentage) {
-        this.prefermentPercentage = prefermentPercentage;
+    public void setBpFats(float bpFats) {
+        this.bpFats = bpFats;
     }
 
-    public float getPreferrmentHydrarion() {
-        return preferrmentHydrarion;
+    public float getBpSalt() {
+        return bpSalt;
     }
 
-    public void setPreferrmentHydrarion(float preferrmentHydrarion) {
-        this.preferrmentHydrarion = preferrmentHydrarion;
+    public void setBpSalt(float bpSalt) {
+        this.bpSalt = bpSalt;
     }
 
-    public float getFats() {
-        return fats;
+    public float getBpYeast() {
+        return bpYeast;
     }
 
-    public void setFats(float fats) {
-        this.fats = fats;
+    public void setBpYeast(float bpYeast) {
+        this.bpYeast = bpYeast;
     }
 
-    public float getSalt() {
-        return salt;
+    public float getFlourWeightPreferment() {
+        return flourWeightPreferment;
     }
 
-    public void setSalt(float salt) {
-        this.salt = salt;
+    public void setFlourWeightPreferment(float flourWeightPreferment) {
+        this.flourWeightPreferment = flourWeightPreferment;
     }
 
-    public float getPrefermentLeaven() {
-        return flourWeight * 1f / 100;
+    public float getBpSaltPreferment() {
+        return bpSaltPreferment;
     }
 
+    public void setBpSaltPreferment(float bpSaltPreferment) {
+        this.bpSaltPreferment = bpSaltPreferment;
+    }
+
+    public float getBpWaterPreferment() {
+        return bpWaterPreferment;
+    }
+
+    public void setBpWaterPreferment(float bpWaterPreferment) {
+        this.bpWaterPreferment = bpWaterPreferment;
+    }
+
+    public float getBpYeastPreferment() {
+        return bpYeastPreferment;
+    }
+
+    public void setBpYeastPreferment(float bpYeastPreferment) {
+        this.bpYeastPreferment = bpYeastPreferment;
+    }
 }
+

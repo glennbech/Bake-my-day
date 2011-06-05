@@ -3,18 +3,18 @@ package com.glennbech.prefermentz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.HapticFeedbackConstants;
-import android.view.View;
+import android.preference.*;
+import android.view.*;
 import android.widget.*;
 
 
 /**
- *
- *
+ * @author Glenn Bech
  */
 public class Calculator extends Activity {
 
     private Recipe recipe;
+    private float ozFactor = 28.3495231f;
 
     /**
      * Called when the activity is first created.
@@ -23,44 +23,55 @@ public class Calculator extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        recipe = new Recipe(2000, 65, 5, 2, 30, 50);
+        recipe = new Recipe(2000, 65, 3, 2, 1f);
 
         final SeekBar sbFlour = (SeekBar) findViewById(R.id.sbFlourWegiht);
         final SeekBar sbHydration = (SeekBar) findViewById(R.id.sbHydration);
         final SeekBar sbPrefermentPercentage = (SeekBar) findViewById(R.id.sbPrefermentPercentage);
         final SeekBar sbSalt = (SeekBar) findViewById(R.id.sbSaltWeight);
         final SeekBar sbFats = (SeekBar) findViewById(R.id.sbFats);
+        final SeekBar sbYeast = (SeekBar) findViewById(R.id.sbYeastWeight);
 
+        Spinner s = (Spinner) findViewById(R.id.prefermentTypeSpinner);
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                onResume();
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
         Button b = (Button) findViewById(R.id.calculate);
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+
+
                 Intent i = new Intent(Calculator.this, ShowRecipeActivity.class);
                 i.putExtra(Recipe.class.getName(), recipe);
                 startActivity(i);
             }
         });
 
-
         SeekBar.OnSeekBarChangeListener onSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-
                 if (seekBar == sbFlour) {
                     recipe.setFlourWeight(5000 * (progress / 100f));
                 } else if (seekBar == sbHydration) {
-                    recipe.setHydration(50f + (progress / 100f * 30f));
+                    recipe.setBpWater(50f + (progress / 100f * 30f));
                 } else if (seekBar == sbPrefermentPercentage) {
-                    recipe.setPrefermentPercentage(progress);
+                    recipe.setFlourWeightPreferment(progress * recipe.getFlourWeight() / 100f);
                 } else if (seekBar == sbSalt) {
-                    recipe.setSalt(progress * 5f / 100);
+                    recipe.setBpSalt(progress * 5f / 100);
                 } else if (seekBar == sbFats) {
-                    recipe.setFats(progress);
+                    recipe.setBpFats(progress);
+                } else if (seekBar == sbYeast) {
+                    recipe.setBpYeast(5f * progress / 100f);
                 }
                 onResume();
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -72,36 +83,72 @@ public class Calculator extends Activity {
         sbPrefermentPercentage.setOnSeekBarChangeListener(onSeekBarChangeListener);
         sbSalt.setOnSeekBarChangeListener(onSeekBarChangeListener);
         sbFats.setOnSeekBarChangeListener(onSeekBarChangeListener);
+        sbYeast.setOnSeekBarChangeListener(onSeekBarChangeListener);
 
         Spinner spinner = (Spinner) findViewById(R.id.prefermentTypeSpinner);
-        String[] values = new String[]{ "No Preferment", "Biga", "Patè de fermentèe", "Poolish"};
-        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, values));
+        String[] values = new String[]{"No Preferment", "Poolish"};
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
+        stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(stringArrayAdapter);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.muConfig) {
+            Intent i = new Intent(this, PreferenceActivity.class);
+            startActivity(i);
+        }
+        return true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        boolean useMetric = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("metric", true);
+        String unitName = useMetric ? " g" : " oz";
+
         // flour weight
         TextView tvFlour = (TextView) findViewById(R.id.flourWeightValue);
-        tvFlour.setText(Float.toString(recipe.getFlourWeight()));
+        tvFlour.setText(Float.toString(recipe.getFlourWeight() / (useMetric ? 1 : ozFactor)) + unitName);
 
         // hydration
         TextView tvHydration = (TextView) findViewById(R.id.hydrationValue);
-        tvHydration.setText(Float.toString(recipe.getHydration()) + "%");
+        tvHydration.setText(Float.toString(recipe.getBpWater()) + "%");
 
         // preferment percentage
         TextView tvPrefermentPercentage = (TextView) findViewById(R.id.prefermentPercentageValue);
-        tvPrefermentPercentage.setText(Float.toString(recipe.getPrefermentPercentage()) + "%");
+        tvPrefermentPercentage.setText(Float.toString(recipe.getFlourWeightPreferment() / recipe.getFlourWeight() * 100) + "%");
 
         // salt
         TextView tvSalt = (TextView) findViewById(R.id.saltWeightValue);
-        tvSalt.setText(Float.toString(recipe.getSalt()));
+        tvSalt.setText(Float.toString(recipe.getBpSalt()) + "%");
 
         // fats
         TextView tvFats = (TextView) findViewById(R.id.fatWeightValue);
-        tvFats.setText(Float.toString(recipe.getFats()));
+        tvFats.setText(Float.toString(recipe.getBpFats()) + "%");
 
+        // yeast
+        TextView tvYeast = (TextView) findViewById(R.id.yeastWeightValue);
+        tvYeast.setText(Float.toString(recipe.getBpYeast()) + "%");
+
+        Spinner prefermentSpinner = (Spinner) findViewById(R.id.prefermentTypeSpinner);
+        String prfermentType = (String) prefermentSpinner.getAdapter().getItem(prefermentSpinner.getSelectedItemPosition());
+
+        View v = findViewById(R.id.sbPrefermentPercentage);
+        if (prfermentType.toLowerCase().equals("no preferment")) {
+            v.setEnabled(false);
+            recipe.setFlourWeightPreferment(0);
+        } else {
+            v.setEnabled(true);
+        }
     }
 }

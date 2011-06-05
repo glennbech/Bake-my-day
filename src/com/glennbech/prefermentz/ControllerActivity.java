@@ -3,7 +3,6 @@ package com.glennbech.prefermentz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.BaseAdapter;
 
 /**
  *
@@ -42,7 +41,7 @@ public class ControllerActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Bundle bundle = data.getExtras();
         if (resultCode == 1) {
-            recipe.setHydration(bundle.getFloat("value"));
+            recipe.setBpWater(bundle.getFloat("value"));
             currentPage = 2;
         }
         onResume();

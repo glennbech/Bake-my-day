@@ -1,138 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/empty"
+            android:layout_width="fill_parent" android:layout_height="fill_parent">
 
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/flourweight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+    <LinearLayout
+            android:orientation="vertical" android:padding="5pt"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:background="#444444"
+            >
 
-        <TextView android:id="@+id/flourWeightValue"
-                  android:layout_alignParentRight="true"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-
-    <SeekBar style="@style/MyCustomProgressStyle"
-             android:id="@+id/sbFlourWegiht"
-             android:layout_height="wrap_content"
-             android:layout_width="fill_parent"
-             android:progress="40"/>
-
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/fatWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView android:id="@+id/fatWeightValue"
-                  android:layout_alignParentRight="true"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-
-    <SeekBar style="@style/MyCustomProgressStyle"
-             android:id="@+id/sbFats"
-             android:layout_height="wrap_content"
-             android:layout_width="fill_parent"
-             android:progress="5"/>
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/saltWeght"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView android:id="@+id/saltWeightValue"
-                  android:layout_alignParentRight="true"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-
-    <SeekBar style="@style/MyCustomProgressStyle"
-             android:id="@+id/sbSaltWeight"
-             android:layout_height="wrap_content"
-             android:layout_width="fill_parent"
-             android:progress="50"/>
-
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
+        <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
         <TextView
-                android:textSize="8pt"
-                android:text="@string/hydration"
+                android:textSize="5pt" android:layout_gravity="center_horizontal"
+                android:text="@string/batchsize"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content"/>
+
+        <!-- Flour weight -->
+
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+
+            <TextView android:id="@+id/flourWeightValue"
+                      android:layout_alignParentRight="true"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                    />
+        </RelativeLayout>
+
+
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbFlourWegiht"
+                 android:layout_height="wrap_content"
+                 android:layout_width="fill_parent"
+                 android:progress="20"/>
+
+        <!-- Cool divider -->
+
+        <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
+              android:layout_marginTop="10pt"/>
+        <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
         <TextView
-                android:layout_alignParentRight="true"
-                android:id="@+id/hydrationValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                android:textSize="5pt"
+                android:text="@string/bakerspercentages"
+                android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"/>
+
+        <!-- Liquid weight -->
+
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+
+            <TextView
+                    android:textSize="8pt"
+                    android:text="@string/bpWater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            <TextView
+                    android:textSize="8pt"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/hydrationValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+        </RelativeLayout>
+
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbHydration" android:layout_width="fill_parent"
+                 android:layout_height="wrap_content" android:progress="65"/>
+
+        <!-- Fat weight -->
+
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+            <TextView
+                    android:textSize="8pt"
+                    android:text="@string/fatWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            <TextView android:id="@+id/fatWeightValue"
+                      android:layout_alignParentRight="true"
+                      android:layout_width="wrap_content"
+                      android:textSize="8pt"
+                      android:layout_height="wrap_content"
+                    />
+        </RelativeLayout>
+
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbFats"
+                 android:layout_height="wrap_content"
+                 android:textSize="8pt"
+                 android:layout_width="fill_parent"
+                 android:progress="5"/>
+
+        <!-- Salt weight -->
+
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+            <TextView
+                    android:textSize="8pt"
+                    android:text="@string/saltWeght"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            <TextView android:id="@+id/saltWeightValue"
+                      android:textSize="8pt"
+                      android:layout_alignParentRight="true"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                    />
+        </RelativeLayout>
 
 
-    </RelativeLayout>
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbSaltWeight"
+                 android:layout_height="wrap_content"
+                 android:layout_width="fill_parent"
+                 android:progress="50"/>
 
-    <SeekBar style="@style/MyCustomProgressStyle"
-             android:id="@+id/sbHydration" android:layout_width="fill_parent"
-             android:layout_height="wrap_content" android:progress="65"/>
+        <!-- Yeast weight -->
 
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+            <TextView
+                    android:textSize="8pt"
+                    android:text="@string/yeastWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            <TextView android:id="@+id/yeastWeightValue"
+                      android:layout_alignParentRight="true"
+                      android:textSize="8pt"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                    />
+        </RelativeLayout>
+
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbYeastWeight"
+                 android:layout_height="wrap_content"
+                 android:layout_width="fill_parent"
+                 android:progress="50"/>
+
+        <!-- Cool divider -->
+
+        <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
+              android:layout_marginTop="10pt"/>
+        <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+
         <TextView
-                android:textSize="8pt"
-                android:text="@string/prefermentpercentage"
+                android:textSize="5pt"
+                android:text="@string/preferment" android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        <Spinner android:id="@+id/prefermentTypeSpinner" android:layout_height="wrap_content"
+                 android:layout_marginTop="2pt"
+                 android:layout_width="fill_parent"/>
+
+        <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
+                        android:layout_width="fill_parent">
+            <TextView
+                    android:textSize="8pt"
+                    android:text="@string/prefermentpercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            <TextView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/prefermentPercentageValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+        </RelativeLayout>
+
+        <SeekBar style="@style/MyCustomProgressStyle"
+                 android:id="@+id/sbPrefermentPercentage" android:layout_width="fill_parent"
+                 android:layout_height="wrap_content" android:progress="0"/>
+
+        <View android:background="#222222" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#000000" android:layout_width="fill_parent" android:layout_height="1px"/>
+        <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+
+        <Button android:id="@+id/calculate" android:layout_gravity="right" android:layout_marginTop="2pt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:layout_alignParentRight="true"
-                android:id="@+id/prefermentPercentageValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-    </RelativeLayout>
-
-    <SeekBar style="@style/MyCustomProgressStyle"
-             android:id="@+id/sbPrefermentPercentage" android:layout_width="fill_parent"
-             android:layout_height="wrap_content" android:progress="30"/>
-
-    <TextView android:id="@+id/prefermentType" android:text="Preferment type" android:layout_width="fill_parent"
-              android:layout_height="wrap_content"/>
-
-    <Spinner android:id="@+id/prefermentTypeSpinner" android:layout_height="wrap_content"
-             android:layout_width="fill_parent"/>
-
-    <Button android:id="@+id/calculate" android:gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Calculate Recipe"/>
-
-</LinearLayout>
-
+                android:text="Calculate Recipe"/>
+    </LinearLayout>
+</ScrollView>

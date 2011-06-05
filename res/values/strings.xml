@@ -2,17 +2,39 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="flourweight">Flour weight</string>
-    <string name="hydration">Liquid</string>
-    <string name="prefermentpercentage">Preferment Precentage</string>
+    <string name="bpWater">Liquid</string>
+    <string name="prefermentpercentage">% of Flour in preferement</string>
     <string name="titlePreferment">Preferment</string>
     <string name="prefermentWater">Water</string>
     <string name="prefermentFlour">Flour</string>
     <string name="doughg">Dough</string>
     <string name="doughLiquid">Liquid</string>
     <string name="doughFlour">Flour</string>
-    <string name="fatWeight">Fats (Oil/Butter)</string>
+    <string name="fatWeight">Fats like oil and shortening</string>
+
     <string name="saltWeght">Salt</string>
     <string name="dougSalt">Salt</string>
-    <string name="doughFat">Fats</string>
-    <string name="prefermentLeaven">Leaven (yest/sourdough starter)</string>
+    <string name="doughFat">Fat. Oil/Shortening</string>
+    <string name="prefermentLeaven">Instant yeast</string>
+    <string name="config">Configuration</string>
+    <string name="batchsize">Total flour weight</string>
+    <string name="preferment">Preferment</string>
+    <string name="bakerspercentages">Bakers percentage formula</string>
+    <string name="yeastWeight">Yeast</string>
+    <string name="breadProfile">Bread profile</string>
+    <string name="dougYeast">Instant yeast</string>
+
+    <string name="profileStiff">Stiff dough. Very firm, dry, not tacky</string>
+    <string name="profileStandard">Standard dough. Tacky, not sticky, supple</string>
+    <string name="profileRustic">Rustic. Wet, sticky.</string>
+    <string name="profileTooWet">Too wet. Will be difficult to handle.</string>
+    <string name="profileTooDry">Too dry</string>
+
+    <string name="profileLean">Lean. Little or no fat. Hard, spongy dough.</string>
+    <string name="profileEnriched">Enriched. Medium to soft dough.</string>
+    <string name="profileRich">Rich. Soft dough</string>
+
+    <string name="profileDirect">Direct/Straight dough. Mixed in one session</string>
+    <string name="profileIndirect">Indirect. Use of pre-ferment (sourdogh/comercial yeast)</string>
+
 </resources>
