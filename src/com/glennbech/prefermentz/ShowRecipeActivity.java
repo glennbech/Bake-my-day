@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import java.text.DecimalFormat;
 
@@ -13,17 +14,22 @@ public class ShowRecipeActivity extends Activity {
     private Recipe recipe;
     private float ozFactor = 28.3495231f;
     private static DecimalFormat f = new DecimalFormat("###.##");
-
+    private GoogleAnalyticsTracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe);
+
+        tracker = GoogleAnalyticsTracker.getInstance();
+        tracker.start("UA-23789697-1", this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        tracker.trackPageView("/activity/ShowRecipeActivity");
         recipe = (Recipe) getIntent().getExtras().getSerializable(Recipe.class.getName());
 
         boolean useMetric = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("metric", true);
@@ -108,5 +114,11 @@ public class ShowRecipeActivity extends Activity {
             tvProfile.setText(getResources().getString(R.string.profileIndirect));
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tracker.stop();
     }
 }

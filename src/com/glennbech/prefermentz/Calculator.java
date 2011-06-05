@@ -3,9 +3,13 @@ package com.glennbech.prefermentz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.*;
-import android.view.*;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.*;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import java.text.DecimalFormat;
 
@@ -19,6 +23,8 @@ public class Calculator extends Activity {
     private float ozFactor = 28.3495231f;
     private static DecimalFormat f = new DecimalFormat("###.#");
 
+    GoogleAnalyticsTracker tracker;
+
     /**
      * Called when the activity is first created.
      */
@@ -26,6 +32,10 @@ public class Calculator extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        tracker = GoogleAnalyticsTracker.getInstance();
+        tracker.start("UA-23789697-1", this);
+
         recipe = new Recipe(1000, 65, 3, 2, 1f);
 
         final SeekBar sbFlour = (SeekBar) findViewById(R.id.sbFlourWegiht);
@@ -115,6 +125,7 @@ public class Calculator extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        tracker.trackPageView("/activity/Calculator");
 
         boolean useMetric = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("metric", true);
         String unitName = useMetric ? " g" : " oz";
@@ -153,5 +164,11 @@ public class Calculator extends Activity {
         } else {
             v.setEnabled(true);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tracker.stop();
     }
 }

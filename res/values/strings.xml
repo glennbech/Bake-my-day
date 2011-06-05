@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">Bake my day</string>
     <string name="flourweight">Flour weight</string>
     <string name="bpWater">Liquid</string>
     <string name="prefermentpercentage">% of Flour in preferement</string>
