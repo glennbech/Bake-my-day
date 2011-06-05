@@ -7,6 +7,8 @@ import android.preference.*;
 import android.view.*;
 import android.widget.*;
 
+import java.text.DecimalFormat;
+
 
 /**
  * @author Glenn Bech
@@ -15,6 +17,7 @@ public class Calculator extends Activity {
 
     private Recipe recipe;
     private float ozFactor = 28.3495231f;
+    private static DecimalFormat f = new DecimalFormat("###.#");
 
     /**
      * Called when the activity is first created.
@@ -23,7 +26,7 @@ public class Calculator extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        recipe = new Recipe(2000, 65, 3, 2, 1f);
+        recipe = new Recipe(1000, 65, 3, 2, 1f);
 
         final SeekBar sbFlour = (SeekBar) findViewById(R.id.sbFlourWegiht);
         final SeekBar sbHydration = (SeekBar) findViewById(R.id.sbHydration);
@@ -56,7 +59,7 @@ public class Calculator extends Activity {
         SeekBar.OnSeekBarChangeListener onSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 if (seekBar == sbFlour) {
-                    recipe.setFlourWeight(5000 * (progress / 100f));
+                    recipe.setFlourWeight(3000 * (progress / 100f));
                 } else if (seekBar == sbHydration) {
                     recipe.setBpWater(50f + (progress / 100f * 30f));
                 } else if (seekBar == sbPrefermentPercentage) {
@@ -118,27 +121,27 @@ public class Calculator extends Activity {
 
         // flour weight
         TextView tvFlour = (TextView) findViewById(R.id.flourWeightValue);
-        tvFlour.setText(Float.toString(recipe.getFlourWeight() / (useMetric ? 1 : ozFactor)) + unitName);
+        tvFlour.setText(f.format(recipe.getFlourWeight() / (useMetric ? 1 : ozFactor)) + unitName);
 
         // hydration
         TextView tvHydration = (TextView) findViewById(R.id.hydrationValue);
-        tvHydration.setText(Float.toString(recipe.getBpWater()) + "%");
+        tvHydration.setText(f.format(recipe.getBpWater()) + "%");
 
         // preferment percentage
         TextView tvPrefermentPercentage = (TextView) findViewById(R.id.prefermentPercentageValue);
-        tvPrefermentPercentage.setText(Float.toString(recipe.getFlourWeightPreferment() / recipe.getFlourWeight() * 100) + "%");
+        tvPrefermentPercentage.setText(f.format(recipe.getFlourWeightPreferment() / recipe.getFlourWeight() * 100) + "%");
 
         // salt
         TextView tvSalt = (TextView) findViewById(R.id.saltWeightValue);
-        tvSalt.setText(Float.toString(recipe.getBpSalt()) + "%");
+        tvSalt.setText(f.format(recipe.getBpSalt()) + "%");
 
         // fats
         TextView tvFats = (TextView) findViewById(R.id.fatWeightValue);
-        tvFats.setText(Float.toString(recipe.getBpFats()) + "%");
+        tvFats.setText(f.format(recipe.getBpFats()) + "%");
 
         // yeast
         TextView tvYeast = (TextView) findViewById(R.id.yeastWeightValue);
-        tvYeast.setText(Float.toString(recipe.getBpYeast()) + "%");
+        tvYeast.setText(f.format(recipe.getBpYeast()) + "%");
 
         Spinner prefermentSpinner = (Spinner) findViewById(R.id.prefermentTypeSpinner);
         String prfermentType = (String) prefermentSpinner.getAdapter().getItem(prefermentSpinner.getSelectedItemPosition());

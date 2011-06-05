@@ -6,10 +6,13 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class ShowRecipeActivity extends Activity {
 
     private Recipe recipe;
     private float ozFactor = 28.3495231f;
+    private static DecimalFormat f = new DecimalFormat("###.##");
 
 
     @Override
@@ -39,18 +42,18 @@ public class ShowRecipeActivity extends Activity {
         // preferment
 
         TextView tvPreFl = (TextView) findViewById(R.id.prefermentFlourValue);
-        tvPreFl.setText(Float.toString(Math.round(recipe.getFlourWeightPreferment() * (useMetric ? 1 : 1 / ozFactor))) + unitName);
+        tvPreFl.setText(f.format((recipe.getFlourWeightPreferment() * (useMetric ? 1 : 1 / ozFactor))) + unitName);
 
         TextView tvPreLiq = (TextView) findViewById(R.id.prefermentWaterValue);
-        tvPreLiq.setText(Float.toString(Math.round(recipe.getBpWaterPreferment() * (useMetric ? 1 : 1 / ozFactor) * recipe.getFlourWeightPreferment())) + unitName);
+        tvPreLiq.setText(f.format((recipe.getBpWaterPreferment() * (useMetric ? 1 : 1 / ozFactor) * recipe.getFlourWeightPreferment())) + unitName);
 
         TextView tvYeast = (TextView) findViewById(R.id.prefermentLeavenValue);
-        tvYeast.setText(Float.toString(Math.round(recipe.getBpYeastPreferment() * (useMetric ? 1 : 1 / ozFactor) * recipe.getFlourWeightPreferment() / 100)) + unitName);
+        tvYeast.setText(f.format((recipe.getBpYeastPreferment() * (useMetric ? 1 : 1 / ozFactor) * recipe.getFlourWeightPreferment() / 100)) + unitName);
 
         // dough
 
         TextView tvDoughFlour = (TextView) findViewById(R.id.doughFlourValue);
-        tvDoughFlour.setText(Float.toString(Math.round(recipe.getFlourWeight() * (useMetric ? 1 : 1 / ozFactor))) + unitName);
+        tvDoughFlour.setText(f.format((recipe.getFlourWeight() * (useMetric ? 1 : 1 / ozFactor))) + unitName);
 
         TextView tvDoughWater = (TextView) findViewById(R.id.douhgLiquidValue);
 
@@ -62,16 +65,16 @@ public class ShowRecipeActivity extends Activity {
             float waterInpreferment = (recipe.getBpWaterPreferment() * recipe.getFlourWeightPreferment());
             water = totalWaterInRecipe - waterInpreferment;
         }
-        tvDoughWater.setText(Float.toString(Math.round(water * (useMetric ? 1 : 1 / ozFactor))) + unitName);
+        tvDoughWater.setText(f.format((water * (useMetric ? 1 : 1 / ozFactor))) + unitName);
 
         TextView tvDoughSalt = (TextView) findViewById(R.id.doughSaltValue);
-        tvDoughSalt.setText(Float.toString(Math.round((recipe.getFlourWeight() * recipe.getBpSalt() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
+        tvDoughSalt.setText(f.format(((recipe.getFlourWeight() * recipe.getBpSalt() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
 
         TextView tvDoughtFat = (TextView) findViewById(R.id.doughFatValue);
-        tvDoughtFat.setText(Float.toString((Math.round(recipe.getFlourWeight() * recipe.getBpFats() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
+        tvDoughtFat.setText(f.format(((recipe.getFlourWeight() * recipe.getBpFats() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
 
         TextView tvDoughYeast = (TextView) findViewById(R.id.doughYeastValue);
-        tvDoughYeast.setText(Float.toString((Math.round(recipe.getFlourWeight() * recipe.getBpYeast() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
+        tvDoughYeast.setText(f.format(((recipe.getFlourWeight() * recipe.getBpYeast() / 100f * (useMetric ? 1 : 1 / ozFactor)))) + unitName);
 
         // profile
 
