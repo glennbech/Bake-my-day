@@ -1,7 +1,8 @@
 package com.glennbech.prefermentz;
 
 /**
- * @author Glenn Bech
+ * @author Gl
+ * enn Bech
  */
 public class Interval {
 

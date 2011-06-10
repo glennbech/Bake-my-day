@@ -36,5 +36,7 @@
 
     <string name="profileDirect">Direct/Straight dough. Mixed in one session</string>
     <string name="profileIndirect">Indirect. Use of pre-ferment (sourdogh/comercial yeast)</string>
+    <string name="formulaList">Bakers percentage formulas</string>
+    <string name="ingredientCount">Number of ingredients </string>
 
 </resources>
