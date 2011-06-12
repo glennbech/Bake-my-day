@@ -9,6 +9,8 @@
 
     <application android:label="Bake my day" android:icon="@drawable/icon" android:debuggable="true">
 
+        <activity android:name=".recipe.RecipeActivity"/>
+
         <activity android:name=".preferences.PreferenceActivity"/>
 
         <activity android:name=".formulalist.FormulaListActivity" android:label="@string/formulaList">

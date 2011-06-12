@@ -37,7 +37,6 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
         final TextView tvCurrentValue = (TextView) v.findViewById(R.id.currentValue);
 
         final FormulaComponent currentComponent = getItem(position);
-        currentComponent.loadIngredient(getContext());
         tvCurrentValue.setText(Float.toString(currentComponent.getBp() * 100) + "%");
 
         TextView ingredientName = (TextView) v.findViewById(R.id.ingredientName);

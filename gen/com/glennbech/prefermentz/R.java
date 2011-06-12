@@ -19,34 +19,31 @@ public final class R {
         public static final int btnSaveFormula=0x7f080005;
         public static final int calculate=0x7f080019;
         public static final int currentValue=0x7f080001;
-        public static final int doughFatValue=0x7f080024;
-        public static final int doughFlourValue=0x7f080022;
-        public static final int doughSaltValue=0x7f080025;
-        public static final int doughYeastValue=0x7f080026;
-        public static final int douhgLiquidValue=0x7f080023;
+        public static final int deleteformula=0x7f080026;
+        public static final int editforumla=0x7f080025;
         public static final int empty=0x7f080007;
         public static final int fatWeightValue=0x7f080010;
+        public static final int flourWeight=0x7f08001c;
         public static final int flourWeightValue=0x7f08000c;
+        public static final int flourweighttext=0x7f08001b;
+        public static final int formulaList=0x7f08000b;
         public static final int formulaName=0x7f080003;
-        public static final int formulalist=0x7f08000b;
         public static final int hydrationValue=0x7f08000e;
         public static final int ingredientCount=0x7f08000a;
         public static final int ingredientName=0x7f080000;
         public static final int lvFormula=0x7f080008;
-        public static final int muConfig=0x7f08002a;
+        public static final int muConfig=0x7f080027;
         public static final int name=0x7f080009;
-        public static final int preferment=0x7f08001a;
-        public static final int prefermentFlour=0x7f08001e;
-        public static final int prefermentFlourValue=0x7f08001f;
-        public static final int prefermentLeavenValue=0x7f080021;
         public static final int prefermentPercentageValue=0x7f080017;
         public static final int prefermentTypeSpinner=0x7f080016;
-        public static final int prefermentWater=0x7f08001c;
-        public static final int prefermentWaterValue=0x7f08001d;
-        public static final int prefermentYeast=0x7f080020;
-        public static final int profileFat=0x7f080028;
-        public static final int profileHydration=0x7f080027;
-        public static final int profileLeaven=0x7f080029;
+        public static final int profileFat=0x7f080020;
+        public static final int profileHydration=0x7f08001f;
+        public static final int profileLeaven=0x7f080021;
+        public static final int recipeList=0x7f08001d;
+        public static final int recipeTitle=0x7f08001a;
+        public static final int recipeingredientname=0x7f080022;
+        public static final int recipeingredientpercent=0x7f080023;
+        public static final int recipingredientweight=0x7f080024;
         public static final int saltWeightValue=0x7f080012;
         public static final int sbFats=0x7f080011;
         public static final int sbFlourWegiht=0x7f08000d;
@@ -55,7 +52,7 @@ public final class R {
         public static final int sbSaltWeight=0x7f080013;
         public static final int sbYeastWeight=0x7f080015;
         public static final int seekbar=0x7f080002;
-        public static final int titlePreferment=0x7f08001b;
+        public static final int titlePreferment=0x7f08001e;
         public static final int yeastWeightValue=0x7f080014;
     }
     public static final class layout {
@@ -65,25 +62,30 @@ public final class R {
         public static final int formulalistlayout=0x7f030003;
         public static final int main=0x7f030004;
         public static final int recipe=0x7f030005;
+        public static final int recipeitem=0x7f030006;
     }
     public static final class menu {
-        public static final int menu=0x7f070000;
+        public static final int longpressmenu=0x7f070000;
+        public static final int menu=0x7f070001;
     }
     public static final class string {
         public static final int addIngredient=0x7f050023;
         public static final int app_name=0x7f050000;
+        public static final int bake=0x7f050027;
         public static final int bakerspercentages=0x7f050012;
         public static final int batchsize=0x7f050010;
         public static final int bpWater=0x7f050002;
         public static final int breadProfile=0x7f050014;
         public static final int cancel=0x7f050025;
         public static final int config=0x7f05000f;
+        public static final int deleteFormula=0x7f050028;
         public static final int dougSalt=0x7f05000c;
         public static final int dougYeast=0x7f050015;
         public static final int doughFat=0x7f05000d;
         public static final int doughFlour=0x7f050009;
         public static final int doughLiquid=0x7f050008;
         public static final int doughg=0x7f050007;
+        public static final int editFormula=0x7f050029;
         public static final int fatWeight=0x7f05000a;
         public static final int flourweight=0x7f050001;
         public static final int formulaList=0x7f050020;

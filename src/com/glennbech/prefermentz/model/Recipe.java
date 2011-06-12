@@ -1,5 +1,6 @@
 package com.glennbech.prefermentz.model;
 
+import android.content.Context;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -25,28 +26,9 @@ public class Recipe implements Serializable {
     @DatabaseField
     private float totalFlourWeight;
 
-    private List<RecipeComponent> recipeComponents = new ArrayList<RecipeComponent>();
-
-    public Recipe(String name, Formula formula, float totalFlourWeight) {
-        this.name = name;
+    public Recipe(Formula formula, float totalFlourWeight) {
         this.formula = formula;
         this.totalFlourWeight = totalFlourWeight;
-
-        float bpFlourTotal = 0;
-        recipeComponents = new ArrayList<RecipeComponent>();
-        for (FormulaComponent fComponent : formula.getFormulaComponentList()) {
-            if (fComponent.getI().isFlour()) {
-                bpFlourTotal += fComponent.getBp();
-            }
-            recipeComponents.add(new RecipeComponent(fComponent.getI(), totalFlourWeight * fComponent.getBp()));
-        }
-        if (bpFlourTotal != 1.0) {
-            throw new IllegalArgumentException(bpFlourTotal + "% flours. Should add up to 100% " + formula);
-        }
-    }
-
-    public Recipe(int recipeId) {
-        this.id = recipeId;
     }
 
     public int getId() {
@@ -88,7 +70,6 @@ public class Recipe implements Serializable {
                 "name='" + name + '\'' +
                 ", formulaitem=" + formula +
                 ", totalFlourWeight=" + totalFlourWeight +
-                ", recipeComponents=" + recipeComponents +
                 '}';
     }
 
@@ -109,5 +90,18 @@ public class Recipe implements Serializable {
         return id;
     }
 
-
+    public List<RecipeComponent> getRecipeComponents(Context c) {
+        float bpFlourTotal = 0;
+        List<RecipeComponent> list = new ArrayList<RecipeComponent>();
+        for (FormulaComponent fComponent : formula.getFormulaComponentList()) {
+            if (fComponent.getI().isFlour()) {
+                bpFlourTotal += fComponent.getBp();
+            }
+            list.add(new RecipeComponent(fComponent.getI(), totalFlourWeight * fComponent.getBp() ));
+        }
+        if (bpFlourTotal != 1.0) {
+//            throw new IllegalArgumentException(bpFlourTotal + "% flours. Should add up to 100% " + formula);
+        }
+        return list;
+    }
 }

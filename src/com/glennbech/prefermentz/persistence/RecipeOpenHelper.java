@@ -41,19 +41,24 @@ public class RecipeOpenHelper extends OrmLiteSqliteOpenHelper {
             Ingredient i;
 
             i = new Ingredient("Wheat AP flour", true);
-            int wheatId = dao.create(i);
+            dao.create(i);
+            int wheatId = i.getId();
 
             i = new Ingredient("Rye AP flour", true);
-            int ryeID = dao.create(i);
+            dao.create(i);
+            int ryeId = i.getId();
 
             i = new Ingredient("Water", false);
-            int waterId = dao.create(i);
+            dao.create(i);
+            int waterId = i.getId();
 
             i = new Ingredient("Salt", false);
-            int saltId = dao.create(i);
+            dao.create(i);
+            int saltId = i.getId();
 
             i = new Ingredient("Dry yeast", false);
-            int yeastId = dao.create(i);
+            dao.create(i);
+            int yeastId = i.getId();
 
             Formula f;
 
@@ -64,20 +69,20 @@ public class RecipeOpenHelper extends OrmLiteSqliteOpenHelper {
             Dao fcDao = getDao(FormulaComponent.class);
 
             Ingredient flour = (Ingredient) dao.queryForId(wheatId);
-            FormulaComponent fcFlour = new FormulaComponent(f, flour, 0.65f);
+            FormulaComponent fcFlour = new FormulaComponent(f, flour, 1f);
             fcDao.create(fcFlour);
 
             Ingredient water = (Ingredient) dao.queryForId(waterId);
-            FormulaComponent fcWater = new FormulaComponent(f, water, 1f);
+            FormulaComponent fcWater = new FormulaComponent(f, water, 0.65f);
             fcDao.create(fcWater);
 
             Ingredient salt = (Ingredient) dao.queryForId(saltId);
-            FormulaComponent fcSalt = new FormulaComponent(f, salt, 2f);
+            FormulaComponent fcSalt = new FormulaComponent(f, salt, .02f);
             fcDao.create(fcSalt);
 
 
             Ingredient yeast = (Ingredient) dao.queryForId(yeastId);
-            FormulaComponent fcYeast = new FormulaComponent(f, yeast, 1f);
+            FormulaComponent fcYeast = new FormulaComponent(f, yeast, 0.01f);
             fcDao.create(fcYeast);
 
         } catch (SQLException e) {

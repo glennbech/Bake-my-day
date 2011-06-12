@@ -43,5 +43,8 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ingredients">Formula ingredients</string>
+    <string name="bake">Recipe</string>
+    <string name="deleteFormula">Delete formula</string>
+    <string name="editFormula">Edit formula</string>
 
 </resources>

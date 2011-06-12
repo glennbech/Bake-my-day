@@ -20,9 +20,9 @@ public class FormulaComponent implements Serializable {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Formula formula;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Ingredient i;
     @DatabaseField
     private float bp;
@@ -69,29 +69,6 @@ public class FormulaComponent implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public void loadIngredient(Context context) {
-        try {
-            RecipeOpenHelper helper = new RecipeOpenHelper(context);
-            Dao<Ingredient, Integer> fclDao = helper.getIngredientDao(context);
-            List<Ingredient> ingredientList = fclDao.queryForAll();
-            for (Ingredient i : ingredientList) {
-                Log.d(FormulaComponent.class.getName(), i.getId() + " " + i.getName());
-            }
-
-            Dao<FormulaComponent, Integer> fclDao2 = helper.getFormulaComponentDao(context);
-            List<FormulaComponent> compList = fclDao2.queryForAll();
-            for (FormulaComponent c : compList) {
-                Log.d(FormulaComponent.class.getName(), c.getId() + " " + c.getBp() + " " + c.getI());
-            }
-
-
-            Ingredient i = fclDao.queryForId(getI().getId());
-            setI(i);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override

@@ -1,187 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:padding="4pt"
-              android:layout_width="fill_parent" android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" android:orientation="vertical" android:padding="5pt"
               android:layout_height="fill_parent" android:background="#444444">
 
+    <TextView android:id="@+id/recipeTitle"
+              android:textSize="5pt" android:textStyle="bold"
+              android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
+              android:layout_height="wrap_content"/>
 
-    <LinearLayout android:id="@+id/preferment" android:orientation="vertical" android:layout_width="fill_parent"
-                  android:layout_height="wrap_content">
+    <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
+    <TextView android:id="@+id/flourweighttext"
+              android:textSize="5pt" android:textStyle="bold"
+              android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
+              android:layout_height="wrap_content"/>
 
-        <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"/>
-        <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
-        <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <SeekBar android:id="@+id/flourWeight" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
 
-        <TextView android:id="@+id/titlePreferment" android:layout_gravity="center_horizontal"
-                  android:textSize="5pt" android:textStyle="bold"
-                  android:text="@string/titlePreferment"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"/>
-
-        <RelativeLayout android:id="@+id/prefermentWater"
-                        android:orientation="horizontal" android:layout_height="wrap_content"
-                        android:layout_width="fill_parent">
-            <TextView
-                    android:textSize="8pt"
-                    android:text="@string/prefermentWater"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-            <TextView
-                    android:textSize="8pt"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/prefermentWaterValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-        </RelativeLayout>
-
-        <RelativeLayout android:id="@+id/prefermentFlour"
-                        android:orientation="horizontal" android:layout_height="wrap_content"
-                        android:layout_width="fill_parent">
-            <TextView
-                    android:textSize="8pt"
-                    android:text="@string/prefermentFlour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-            <TextView
-                    android:textSize="8pt"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/prefermentFlourValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-        </RelativeLayout>
-
-        <RelativeLayout android:id="@+id/prefermentYeast"
-                        android:orientation="horizontal" android:layout_height="wrap_content"
-                        android:layout_width="fill_parent">
-            <TextView
-                    android:textSize="8pt"
-                    android:text="@string/prefermentLeaven"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-            <TextView
-                    android:textSize="8pt"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/prefermentLeavenValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-
+    <TextView
+            android:textSize="5pt" android:textStyle="bold"
+            android:text="@string/flourweight"
+            android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"/>
     <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
-          android:layout_marginTop="10pt"/>
+          android:layout_marginTop="5pt"/>
     <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
     <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
     <TextView
             android:textSize="5pt" android:textStyle="bold"
-            android:text="@string/doughg"
+            android:text="@string/ingredients"
             android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"/>
 
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/doughFlour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:textSize="8pt"
-                android:layout_alignParentRight="true"
-                android:id="@+id/doughFlourValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/doughLiquid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:textSize="8pt"
-                android:layout_alignParentRight="true"
-                android:id="@+id/douhgLiquidValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/doughFat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:textSize="8pt"
-                android:layout_alignParentRight="true"
-                android:id="@+id/doughFatValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/dougSalt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:textSize="8pt"
-                android:layout_alignParentRight="true"
-                android:id="@+id/doughSaltValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
-    <RelativeLayout android:orientation="horizontal" android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-        <TextView
-                android:textSize="8pt"
-                android:text="@string/dougYeast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        <TextView
-                android:textSize="8pt"
-                android:layout_alignParentRight="true"
-                android:id="@+id/doughYeastValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
-
+    <ListView android:id="@+id/recipeList" android:layout_width="fill_parent" android:layout_height="fill_parent"/>
 
     <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
           android:layout_marginTop="10pt"/>
@@ -194,7 +48,6 @@
               android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
               android:layout_height="wrap_content"/>
 
-
     <TextView android:id="@+id/profileHydration" android:layout_width="fill_parent"
               android:layout_height="wrap_content" android:layout_marginTop="2pt"/>
 
@@ -203,6 +56,5 @@
 
     <TextView android:id="@+id/profileLeaven" android:layout_width="fill_parent" android:layout_marginTop="2pt"
               android:layout_height="wrap_content"/>
-
 
 </LinearLayout>

@@ -13,6 +13,24 @@ public class RecipeComponent {
         this.weight = weight;
     }
 
+
+    public Ingredient getI() {
+        return i;
+    }
+
+    public void setI(Ingredient i) {
+        this.i = i;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+
     @Override
     public String toString() {
         return "RecipeComponent{" +

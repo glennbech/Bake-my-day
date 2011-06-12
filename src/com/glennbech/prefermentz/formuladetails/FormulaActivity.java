@@ -65,10 +65,8 @@ public class FormulaActivity extends Activity {
         String unitName = useMetric ? " g" : " oz";
 
         ListView lv = (ListView) findViewById(R.id.lvFormula);
-        formula.loadFormulaComponents(this);
         lv.setAdapter(new FormulaComponentListAdapter(this, formula.getFormulaComponentList()));
     }
-
 
     public void save() {
         AsyncTask at = new AsyncTask() {
@@ -85,6 +83,12 @@ public class FormulaActivity extends Activity {
                     throw new RuntimeException(e);
                 }
                 return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                Toast.makeText(FormulaActivity.this, "Saved", Toast.LENGTH_LONG).show();
+                startActivity(new Intent().setClass(FormulaActivity.this, FormulaListActivity.class));
             }
         };
         at.execute();

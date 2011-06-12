@@ -19,6 +19,7 @@ public class Formula implements Serializable {
 
     @DatabaseField(generatedId = true)
     private int id;
+
     @DatabaseField
     private String name;
 
@@ -37,6 +38,10 @@ public class Formula implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
