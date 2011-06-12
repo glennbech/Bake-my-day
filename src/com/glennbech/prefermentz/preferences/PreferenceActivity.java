@@ -1,6 +1,7 @@
-package com.glennbech.prefermentz;
+package com.glennbech.prefermentz.preferences;
 
 import android.os.Bundle;
+import com.glennbech.prefermentz.R;
 
 /**
  * @author Glenn Bech

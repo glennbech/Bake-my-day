@@ -15,10 +15,13 @@ public class Recipe implements Serializable {
 
     @DatabaseField(generatedId = true)
     private int id = -1;
+
     @DatabaseField
     private String name;
+
     @DatabaseField
     private Formula formula;
+
     @DatabaseField
     private float totalFlourWeight;
 
@@ -83,7 +86,7 @@ public class Recipe implements Serializable {
     public String toString() {
         return "Recipe{" +
                 "name='" + name + '\'' +
-                ", formula=" + formula +
+                ", formulaitem=" + formula +
                 ", totalFlourWeight=" + totalFlourWeight +
                 ", recipeComponents=" + recipeComponents +
                 '}';
@@ -106,23 +109,5 @@ public class Recipe implements Serializable {
         return id;
     }
 
-    public static class RecipeComponent {
-
-        private Ingredient i;
-        private float weight;
-
-        public RecipeComponent(Ingredient i, float weight) {
-            this.i = i;
-            this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return "RecipeComponent{" +
-                    "i=" + i +
-                    ", weight=" + weight +
-                    '}';
-        }
-    }
 
 }

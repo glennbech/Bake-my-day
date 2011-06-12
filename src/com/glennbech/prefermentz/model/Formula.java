@@ -1,11 +1,12 @@
 package com.glennbech.prefermentz.model;
 
 import android.content.Context;
-import com.glennbech.prefermentz.persistance.RecipeOpenHelper;
+import com.glennbech.prefermentz.persistence.RecipeOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @author Glenn Bech
  */
 @DatabaseTable(tableName = "formula")
-public class Formula {
+public class Formula implements Serializable {
 
     @DatabaseField(generatedId = true)
     private int id;
@@ -91,9 +92,8 @@ public class Formula {
     public void loadFormulaComponents(Context context) {
         try {
             RecipeOpenHelper helper = new RecipeOpenHelper(context);
-            Dao<FormulaComponent, String> fclDao = helper.getFormulaComponentDao(context);
-            List<FormulaComponent> componenentList = fclDao.queryForEq("formula_id", getId());
-            setFormulaComponentList(componenentList);
+            Dao<FormulaComponent, Integer> fclDao = helper.getFormulaComponentDao(context);
+            this.formulaComponentList = fclDao.queryForEq("formula_id", getId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

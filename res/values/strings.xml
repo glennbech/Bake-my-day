@@ -25,7 +25,7 @@
     <string name="dougYeast">Instant yeast</string>
 
     <string name="profileStiff">Stiff dough. Very firm, dry, not tacky</string>
-    <string name="profileStandard">Standard dough. Tacky, not sticky, supple</string>
+    <string name="profileStandard">Standard dough. Tacky, not sticky, flexible</string>
     <string name="profileRustic">Rustic. Wet, sticky.</string>
     <string name="profileTooWet">Too wet. Will be difficult to handle.</string>
     <string name="profileTooDry">Too dry</string>
@@ -37,6 +37,11 @@
     <string name="profileDirect">Direct/Straight dough. Mixed in one session</string>
     <string name="profileIndirect">Indirect. Use of pre-ferment (sourdogh/comercial yeast)</string>
     <string name="formulaList">Bakers percentage formulas</string>
-    <string name="ingredientCount">Number of ingredients </string>
+    <string name="ingredientCount">Number of ingredients</string>
+    <string name="formulas">Formulas</string>
+    <string name="addIngredient">Add Ingredient</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ingredients">Formula ingredients</string>
 
 </resources>

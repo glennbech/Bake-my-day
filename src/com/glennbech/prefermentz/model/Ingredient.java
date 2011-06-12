@@ -55,10 +55,12 @@ public class Ingredient implements Serializable {
         this.flour = flour;
     }
 
+
     @Override
     public String toString() {
         return "Ingredient{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", flour=" + flour +
                 '}';
     }

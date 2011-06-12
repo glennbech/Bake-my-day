@@ -1,4 +1,4 @@
-package com.glennbech.prefermentz.persistance;
+package com.glennbech.prefermentz.persistence;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -39,25 +39,21 @@ public class RecipeOpenHelper extends OrmLiteSqliteOpenHelper {
 
             Dao dao = getDao(Ingredient.class);
             Ingredient i;
+
             i = new Ingredient("Wheat AP flour", true);
-            int wheatId = i.getId();
-            dao.create(i);
+            int wheatId = dao.create(i);
 
             i = new Ingredient("Rye AP flour", true);
-            int ryeID = i.getId();
-            dao.create(i);
+            int ryeID = dao.create(i);
 
             i = new Ingredient("Water", false);
-            int waterId = i.getId();
-            dao.create(i);
+            int waterId = dao.create(i);
 
             i = new Ingredient("Salt", false);
-            int saltId = i.getId();
-            dao.create(i);
+            int saltId = dao.create(i);
 
             i = new Ingredient("Dry yeast", false);
-            int yeastId = i.getId();
-            dao.create(i);
+            int yeastId = dao.create(i);
 
             Formula f;
 
@@ -67,13 +63,22 @@ public class RecipeOpenHelper extends OrmLiteSqliteOpenHelper {
 
             Dao fcDao = getDao(FormulaComponent.class);
 
-            Ingredient ingredient = (Ingredient) dao.queryForId(wheatId);
-            FormulaComponent fc = new FormulaComponent(f, ingredient, 0.65f);
-            fcDao.create(fc);
+            Ingredient flour = (Ingredient) dao.queryForId(wheatId);
+            FormulaComponent fcFlour = new FormulaComponent(f, flour, 0.65f);
+            fcDao.create(fcFlour);
 
             Ingredient water = (Ingredient) dao.queryForId(waterId);
-            fc = new FormulaComponent(f, water, 1f);
-            fcDao.create(fc);
+            FormulaComponent fcWater = new FormulaComponent(f, water, 1f);
+            fcDao.create(fcWater);
+
+            Ingredient salt = (Ingredient) dao.queryForId(saltId);
+            FormulaComponent fcSalt = new FormulaComponent(f, salt, 2f);
+            fcDao.create(fcSalt);
+
+
+            Ingredient yeast = (Ingredient) dao.queryForId(yeastId);
+            FormulaComponent fcYeast = new FormulaComponent(f, yeast, 1f);
+            fcDao.create(fcYeast);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -103,9 +108,17 @@ public class RecipeOpenHelper extends OrmLiteSqliteOpenHelper {
      * @param context
      * @return
      */
-    public Dao<FormulaComponent, String> getFormulaComponentDao(Context context) {
+    public Dao<FormulaComponent, Integer> getFormulaComponentDao(Context context) {
         try {
             return getDao(FormulaComponent.class);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Dao<Ingredient, Integer> getIngredientDao(Context context) {
+        try {
+            return getDao(Ingredient.class);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
