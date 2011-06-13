@@ -27,11 +27,13 @@
         <activity android:name=".addforumacomponent.AddFormulaComponentActivity" android:screenOrientation="portrait"
                   android:label="@string/app_name"/>
 
+        <activity android:name=".newformula.NewFormulaActivity" android:screenOrientation="portrait"
+                  android:label="@string/app_name"/>
 
-</application>
+    </application>
 
 
-<uses-permission android:name="android.permission.INTERNET"/>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-        </manifest>
+</manifest>

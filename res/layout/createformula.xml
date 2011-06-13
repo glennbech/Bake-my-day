@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="#444444"
+              android:padding="5pt" android:orientation="vertical" android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+
+    <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+
+    <TextView
+            android:textSize="5pt" android:layout_gravity="center_horizontal"
+            android:text="@string/createformula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/createformulaname" android:layout_height="wrap_content"
+              android:layout_width="fill_parent"/>
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/btncancelformula" android:text="@string/cancel" android:layout_width="fill_parent"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnsavenewformula" android:text="@string/save" android:layout_width="fill_parent"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

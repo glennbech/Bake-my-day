@@ -12,6 +12,14 @@
     <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
     <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
+    <Button android:id="@+id/newformulabutton" android:text="@string/newformula" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+
+
     <ListView android:id="@+id/formulaList" android:layout_width="fill_parent"
               android:layout_height="wrap_content"/>
 

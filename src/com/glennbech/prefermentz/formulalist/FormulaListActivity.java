@@ -15,6 +15,7 @@ import com.glennbech.prefermentz.R;
 import com.glennbech.prefermentz.formuladetails.FormulaDetailsActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.model.Recipe;
+import com.glennbech.prefermentz.newformula.NewFormulaActivity;
 import com.glennbech.prefermentz.persistence.RecipeOpenHelper;
 import com.glennbech.prefermentz.recipe.RecipeActivity;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -36,6 +37,24 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
         setContentView(R.layout.formulalistlayout);
         ListView lv = (ListView) findViewById(R.id.formulaList);
         registerForContextMenu(lv);
+
+        View v = findViewById(R.id.newformulabutton);
+        v.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivityForResult(new Intent().setClass(FormulaListActivity.this, NewFormulaActivity.class), 1);
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            ListView lv = (ListView) findViewById(R.id.formulaList);
+            ((ArrayAdapter) lv.getAdapter()).notifyDataSetChanged();
+        }
     }
 
     @Override

@@ -48,5 +48,7 @@
     <string name="editFormula">Edit formula</string>
     <string name="noingredient">No ingredient selected</string>
     <string name="bakerspercantagetext">Bakers percentage</string>
+    <string name="createformula">Create formula</string>
+    <string name="newformula">New formula</string>
 
 </resources>
