@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.glennbech.prefermentz.R;
+import com.glennbech.prefermentz.addforumacomponent.AddFormulaComponentActivity;
 import com.glennbech.prefermentz.formulalist.FormulaListActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.model.FormulaComponent;
@@ -22,7 +23,7 @@ import java.text.DecimalFormat;
 /**
  * @author Glenn Bech
  */
-public class FormulaActivity extends Activity {
+public class FormulaDetailsActivity extends Activity {
 
     private float ozFactor = 28.3495231f;
     private static DecimalFormat f = new DecimalFormat("###.#");
@@ -36,7 +37,7 @@ public class FormulaActivity extends Activity {
         View cancelButton = findViewById(R.id.btnCancelFormula);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                startActivity(new Intent().setClass(FormulaActivity.this, FormulaListActivity.class));
+                startActivity(new Intent().setClass(FormulaDetailsActivity.this, FormulaListActivity.class));
             }
         });
 
@@ -46,6 +47,17 @@ public class FormulaActivity extends Activity {
                 save();
             }
         });
+
+        View addbutton = findViewById(R.id.btnAddIngredientToFormula);
+        addbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(FormulaDetailsActivity.this, AddFormulaComponentActivity.class);
+                i.putExtra(Formula.class.getName(), formula);
+                startActivity(i);
+            }
+        });
+
+
     }
 
     @Override
@@ -72,14 +84,14 @@ public class FormulaActivity extends Activity {
         AsyncTask at = new AsyncTask() {
             @Override
             protected Object doInBackground(Object... objects) {
-                RecipeOpenHelper openHelper = new RecipeOpenHelper(FormulaActivity.this);
-                Dao dao = openHelper.getFormulaComponentDao(FormulaActivity.this);
+                RecipeOpenHelper openHelper = new RecipeOpenHelper(FormulaDetailsActivity.this);
+                Dao dao = openHelper.getFormulaComponentDao(FormulaDetailsActivity.this);
                 try {
                     for (FormulaComponent currentComponent : formula.getFormulaComponentList()) {
                         dao.update(currentComponent);
                     }
                 } catch (SQLException e) {
-                    Toast.makeText(FormulaActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(FormulaDetailsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     throw new RuntimeException(e);
                 }
                 return null;
@@ -87,8 +99,8 @@ public class FormulaActivity extends Activity {
 
             @Override
             protected void onPostExecute(Object o) {
-                Toast.makeText(FormulaActivity.this, "Saved", Toast.LENGTH_LONG).show();
-                startActivity(new Intent().setClass(FormulaActivity.this, FormulaListActivity.class));
+                Toast.makeText(FormulaDetailsActivity.this, "Saved", Toast.LENGTH_LONG).show();
+                startActivity(new Intent().setClass(FormulaDetailsActivity.this, FormulaListActivity.class));
             }
         };
         at.execute();

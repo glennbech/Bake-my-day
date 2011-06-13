@@ -3,7 +3,7 @@
               android:layout_width="fill_parent" android:orientation="vertical" android:padding="5pt"
               android:layout_height="fill_parent" android:background="#444444">
 
-    <TextView android:id="@+id/recipeTitle"
+    <TextView android:id="@+id/selectedIngredient" android:text="@string/noingredient"
               android:textSize="5pt" android:textStyle="bold"
               android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
               android:layout_height="wrap_content"/>
@@ -12,7 +12,7 @@
     <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
     <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
-    <TextView android:id="@+id/flourweighttext"
+    <TextView android:id="@+id/bakersPercentage"
               android:textSize="5pt" android:textStyle="bold"
               android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
               android:layout_height="wrap_content"/>
@@ -21,9 +21,24 @@
 
     <TextView
             android:textSize="5pt" android:textStyle="bold"
-            android:text="@string/flourweight"
+            android:text="@string/bakerspercantagetext"
             android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"/>
+
+    <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
+          android:layout_marginTop="5pt"/>
+    <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
+    <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/btnCancelAddComponent" android:text="@string/cancel" android:layout_width="fill_parent"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnAddComponent" android:text="@string/save" android:layout_width="fill_parent"
+                android:layout_weight="0.5" android:enabled="false"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
           android:layout_marginTop="5pt"/>
     <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
@@ -35,29 +50,26 @@
             android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"/>
 
-    <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
-          android:layout_marginTop="10pt"/>
-    <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
-    <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
-
-
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@+id/btnCancelAddComponent" android:text="@string/cancel" android:layout_width="fill_parent"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"/>
-        <Button android:id="@+id/btnSaveAddComponent" android:enabled="false" android:text="@string/save"
-                android:layout_width="fill_parent"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"/>
-    </LinearLayout>
+    <ListView android:id="@+id/recipeList" android:layout_width="fill_parent" android:layout_height="fill_parent"/>
 
     <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"
           android:layout_marginTop="10pt"/>
     <View android:background="#252525" android:layout_width="fill_parent" android:layout_height="1px"/>
     <View android:background="#666666" android:layout_width="fill_parent" android:layout_height="1px"/>
 
-    <ListView android:id="@+id/ingredientList" android:layout_width="fill_parent" android:layout_height="fill_parent">
-    </ListView>
+    <TextView android:id="@+id/titlePreferment"
+              android:textSize="5pt" android:textStyle="bold"
+              android:text="@string/breadProfile"
+              android:layout_width="wrap_content" android:layout_gravity="center_horizontal"
+              android:layout_height="wrap_content"/>
 
+    <TextView android:id="@+id/profileHydration" android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:layout_marginTop="2pt"/>
+
+    <TextView android:id="@+id/profileFat" android:layout_width="fill_parent" android:layout_marginTop="2pt"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:id="@+id/profileLeaven" android:layout_width="fill_parent" android:layout_marginTop="2pt"
+              android:layout_height="wrap_content"/>
 
 </LinearLayout>

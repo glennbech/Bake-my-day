@@ -18,12 +18,11 @@ import java.util.List;
  */
 public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> {
 
-    public FormulaComponentListAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-    }
+    private GravityAwareSeekbarList gravityAwareSeekbarList;
 
     public FormulaComponentListAdapter(Context context, List<FormulaComponent> formulas) {
         super(context, R.layout.formulaitem, formulas);
+        gravityAwareSeekbarList = new GravityAwareSeekbarList(context);
     }
 
     @Override
@@ -35,14 +34,13 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
         }
 
         final TextView tvCurrentValue = (TextView) v.findViewById(R.id.currentValue);
-
         final FormulaComponent currentComponent = getItem(position);
         tvCurrentValue.setText(Float.toString(currentComponent.getBp() * 100) + "%");
 
         TextView ingredientName = (TextView) v.findViewById(R.id.ingredientName);
         ingredientName.setText(currentComponent.getI().getName());
 
-        SeekBar sb = (SeekBar) v.findViewById(R.id.seekbar);
+        final SeekBar sb = (SeekBar) v.findViewById(R.id.seekbar);
         int progress = (int) (currentComponent.getBp() * 100);
         sb.setProgress(progress);
 
@@ -54,6 +52,7 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
 
             public void onStartTrackingTouch(SeekBar seekBar) {
                 Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                gravityAwareSeekbarList.add(sb);
                 v.vibrate(100);
             }
 
@@ -64,9 +63,6 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
         });
         return v;
     }
-
-
-
 
 
 }

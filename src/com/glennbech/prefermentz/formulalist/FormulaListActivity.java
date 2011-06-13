@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.glennbech.prefermentz.R;
-import com.glennbech.prefermentz.formuladetails.FormulaActivity;
+import com.glennbech.prefermentz.formuladetails.FormulaDetailsActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.model.Recipe;
 import com.glennbech.prefermentz.persistence.RecipeOpenHelper;
@@ -88,7 +88,7 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
             ListView lv = (ListView) findViewById(R.id.formulaList);
             ArrayAdapter<Formula> adapter = (ArrayAdapter<Formula>) lv.getAdapter();
             Formula f = (Formula) adapter.getItem(arrayAdapterPosition);
-            Intent i = new Intent().setClass(FormulaListActivity.this, FormulaActivity.class);
+            Intent i = new Intent().setClass(FormulaListActivity.this, FormulaDetailsActivity.class);
             i.putExtra(Formula.class.getName(), f);
             startActivity(i);
         }

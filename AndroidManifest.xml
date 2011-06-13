@@ -9,25 +9,29 @@
 
     <application android:label="Bake my day" android:icon="@drawable/icon" android:debuggable="true">
 
-        <activity android:name=".recipe.RecipeActivity"/>
+        <activity android:name=".recipe.RecipeActivity" android:screenOrientation="portrait"/>
 
-        <activity android:name=".preferences.PreferenceActivity"/>
+        <activity android:name=".preferences.PreferenceActivity" android:screenOrientation="portrait"/>
 
-        <activity android:name=".formulalist.FormulaListActivity" android:label="@string/formulaList">
+        <activity android:name=".formulalist.FormulaListActivity" android:label="@string/formulaList"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".formuladetails.FormulaActivity"
-                  android:label="@string/app_name">
+        <activity android:name=".formuladetails.FormulaDetailsActivity" android:screenOrientation="portrait"
+                  android:label="@string/app_name"/>
 
-        </activity>
-    </application>
+        <activity android:name=".addforumacomponent.AddFormulaComponentActivity" android:screenOrientation="portrait"
+                  android:label="@string/app_name"/>
 
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+</application>
 
-</manifest> 
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+        </manifest>
