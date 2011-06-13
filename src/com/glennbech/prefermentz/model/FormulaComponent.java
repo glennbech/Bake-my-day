@@ -16,10 +16,10 @@ import java.util.List;
  */
 
 @DatabaseTable(tableName = "formulacomponent")
-public class FormulaComponent implements Serializable {
+public class FormulaComponent implements Serializable, Comparable<FormulaComponent> {
 
     @DatabaseField(generatedId = true)
-    private int id;
+    private int id = -1;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Formula formula;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
@@ -69,6 +69,16 @@ public class FormulaComponent implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public int compareTo(FormulaComponent o) {
+        if (o == null) {
+            throw new NullPointerException();
+        }
+        if (o.getBp() == getBp()) {
+            return 0;
+        }
+        return o.getBp() > getBp() ? 1 : -1;
     }
 
     @Override

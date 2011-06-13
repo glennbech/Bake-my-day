@@ -39,7 +39,7 @@ public class RecipeActivity extends Activity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 //todo fix this with adapter.invalidate.
                 recipeComponentListAdapter = new RecipeComponentListAdapter(RecipeActivity.this, recipe.getRecipeComponents(RecipeActivity.this));
-                ListView lv = (ListView) findViewById(R.id.recipeList);
+                ListView lv = (ListView) findViewById(R.id.recipeingredientlist);
                 lv.setAdapter(recipeComponentListAdapter);
             }
         });
@@ -58,11 +58,9 @@ public class RecipeActivity extends Activity {
         tv.setText(recipe.getFormula().getName());
 
         recipeComponentListAdapter = new RecipeComponentListAdapter(this, recipe.getRecipeComponents(RecipeActivity.this));
-
         SeekBar sbFlour = (SeekBar) findViewById(R.id.flourWeight);
         sbFlour.setProgress((int) (100f * recipe.getTotalFlourWeight() / MAX_FLOUR));
-        ListView lv = (ListView) findViewById(R.id.recipeList);
-
+        ListView lv = (ListView) findViewById(R.id.recipeingredientlist);
         lv.setAdapter(recipeComponentListAdapter);
     }
 

@@ -15,11 +15,11 @@ public final class R {
     }
     public static final class id {
         public static final int bakersPercentage=0x7f080001;
+        public static final int bakerspercentageseekbar=0x7f080002;
         public static final int btnAddComponent=0x7f080004;
         public static final int btnAddIngredientToFormula=0x7f080010;
         public static final int btnCancelAddComponent=0x7f080003;
         public static final int btnCancelFormula=0x7f08000e;
-        public static final int btnSaveAddComponent=0x7f080027;
         public static final int btnSaveFormula=0x7f08000f;
         public static final int calculate=0x7f080024;
         public static final int currentValue=0x7f08000b;
@@ -27,14 +27,14 @@ public final class R {
         public static final int editforumla=0x7f08002c;
         public static final int empty=0x7f080011;
         public static final int fatWeightValue=0x7f08001b;
-        public static final int flourWeight=0x7f080002;
+        public static final int flourWeight=0x7f080027;
         public static final int flourWeightValue=0x7f080017;
         public static final int flourweighttext=0x7f080026;
         public static final int formulaList=0x7f080015;
         public static final int formulaName=0x7f08000d;
         public static final int hydrationValue=0x7f080019;
         public static final int ingredientCount=0x7f080014;
-        public static final int ingredientList=0x7f080028;
+        public static final int ingredientList=0x7f080005;
         public static final int ingredientListName=0x7f080016;
         public static final int ingredientName=0x7f08000a;
         public static final int lvFormula=0x7f080012;
@@ -45,8 +45,8 @@ public final class R {
         public static final int profileFat=0x7f080008;
         public static final int profileHydration=0x7f080007;
         public static final int profileLeaven=0x7f080009;
-        public static final int recipeList=0x7f080005;
         public static final int recipeTitle=0x7f080025;
+        public static final int recipeingredientlist=0x7f080028;
         public static final int recipeingredientname=0x7f080029;
         public static final int recipeingredientpercent=0x7f08002a;
         public static final int recipingredientweight=0x7f08002b;

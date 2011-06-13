@@ -36,16 +36,16 @@ public class AddFormulaComponentActivity extends Activity {
                 currentIngredient = (Ingredient) adapterView.getItemAtPosition(position);
                 TextView tv = (TextView) findViewById(R.id.selectedIngredient);
                 tv.setText(currentIngredient.getName());
-                View btnSave = findViewById(R.id.btnSaveAddComponent);
+                View btnSave = findViewById(R.id.btnAddComponent);
                 btnSave.setEnabled(true);
             }
         });
 
-        View btnSave = findViewById(R.id.btnSaveAddComponent);
+        View btnSave = findViewById(R.id.btnAddComponent);
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 FormulaComponent fc = new FormulaComponent();
-                SeekBar sb = (SeekBar) findViewById(R.id.bakersPercentage);
+                SeekBar sb = (SeekBar) findViewById(R.id.bakerspercentageseekbar);
                 fc.setFormula(currentFormula);
                 fc.setI(currentIngredient);
                 fc.setBp(sb.getProgress() / 100f);
@@ -54,6 +54,26 @@ public class AddFormulaComponentActivity extends Activity {
             }
         });
 
+        View btnCancel = findViewById(R.id.btnCancelAddComponent);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                AddFormulaComponentActivity.this.finishActivity(RESULT_CANCELED);
+            }
+        });
+
+        SeekBar sb = (SeekBar) findViewById(R.id.bakerspercentageseekbar);
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                TextView tv = (TextView) findViewById(R.id.bakersPercentage);
+                tv.setText(seekBar.getProgress() + "%");
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
     }
 
     @Override

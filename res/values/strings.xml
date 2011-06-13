@@ -39,7 +39,7 @@
     <string name="formulaList">Bakers percentage formulas</string>
     <string name="ingredientCount">Number of ingredients</string>
     <string name="formulas">Formulas</string>
-    <string name="addIngredient">Add Ingredient</string>
+    <string name="addIngredient">Add</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ingredients">Formula ingredients</string>

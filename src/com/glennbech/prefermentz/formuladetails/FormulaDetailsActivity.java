@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.Collections;
 
 /**
  * @author Glenn Bech
@@ -53,11 +55,21 @@ public class FormulaDetailsActivity extends Activity {
             public void onClick(View view) {
                 Intent i = new Intent(FormulaDetailsActivity.this, AddFormulaComponentActivity.class);
                 i.putExtra(Formula.class.getName(), formula);
-                startActivity(i);
+                startActivityForResult(i, 1);
             }
         });
+    }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            FormulaComponent comp = (FormulaComponent) data.getSerializableExtra(FormulaComponent.class.getName());
+            formula.getFormulaComponentList().add(comp);
+            Collections.sort(formula.getFormulaComponentList());
+            ArrayAdapter adapter = (ArrayAdapter) ((ListView) findViewById(R.id.lvFormula)).getAdapter();
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -88,6 +100,9 @@ public class FormulaDetailsActivity extends Activity {
                 Dao dao = openHelper.getFormulaComponentDao(FormulaDetailsActivity.this);
                 try {
                     for (FormulaComponent currentComponent : formula.getFormulaComponentList()) {
+                        if (currentComponent.getId() == -1) {
+                            dao.create(currentComponent);
+                        }
                         dao.update(currentComponent);
                     }
                 } catch (SQLException e) {
