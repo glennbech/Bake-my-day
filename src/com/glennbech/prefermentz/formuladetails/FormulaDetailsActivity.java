@@ -58,6 +58,8 @@ public class FormulaDetailsActivity extends Activity {
                 startActivityForResult(i, 1);
             }
         });
+
+
     }
 
     @Override
@@ -73,6 +75,19 @@ public class FormulaDetailsActivity extends Activity {
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        this.formula = (Formula) savedInstanceState.getSerializable(Formula.class.getName());
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(Formula.class.getName(), this.formula);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -82,14 +97,16 @@ public class FormulaDetailsActivity extends Activity {
             throw new RuntimeException("need formula as serializable Extra");
         }
 
+        ListView lv = (ListView) findViewById(R.id.lvFormula);
+        lv.setAdapter(new FormulaComponentListAdapter(this, formula.getFormulaComponentList()));
+
         TextView tv = (TextView) findViewById(R.id.formulaName);
         tv.setText(formula.getName());
 
         boolean useMetric = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("metric", true);
         String unitName = useMetric ? " g" : " oz";
 
-        ListView lv = (ListView) findViewById(R.id.lvFormula);
-        lv.setAdapter(new FormulaComponentListAdapter(this, formula.getFormulaComponentList()));
+
     }
 
     public void save() {

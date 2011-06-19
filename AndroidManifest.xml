@@ -9,6 +9,9 @@
 
     <application android:label="Bake my day" android:icon="@drawable/icon" android:debuggable="true">
 
+
+        <activity android:name=".ingredient.NewIngredientActivity" android:screenOrientation="portrait"/>
+
         <activity android:name=".recipe.RecipeActivity" android:screenOrientation="portrait"/>
 
         <activity android:name=".preferences.PreferenceActivity" android:screenOrientation="portrait"/>

@@ -21,7 +21,6 @@ import java.util.List;
  */
 public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> {
 
-
     private RecipeOpenHelper roHelper;
 
     public FormulaComponentListAdapter(Context context, List<FormulaComponent> formulas) {
@@ -48,26 +47,13 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
         int progress = (int) (currentComponent.getBp() * 100);
         sb.setProgress(progress);
 
-        Button b = (Button) v.findViewById(R.id.enterbpvaluebutton);
-        b.setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.enterbpvaluebutton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 showAlert(currentComponent);
                 tvCurrentValue.setText(Float.toString(currentComponent.getBp() * 100) + "%");
             }
         });
 
-        v.findViewById(R.id.deletecomponentbutton).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                currentComponent.getId();
-                Dao<FormulaComponent, Integer> dao = roHelper.getFormulaComponentDao(getContext());
-                try {
-                    dao.delete(currentComponent);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        );
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
@@ -79,49 +65,34 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                if (seekBar.getProgress() == 0) {
-                    deleteComponent(currentComponent);
-                }
-
             }
         });
         return v;
     }
 
-    private void deleteComponent(final FormulaComponent currentComponent) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Dao<FormulaComponent, Integer> dao = roHelper.getFormulaComponentDao(getContext());
-                        try {
-                            dao.delete(currentComponent);
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-
-    }
-
     public void showAlert(final FormulaComponent currentComponent) {
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        alert.setTitle(getContext().getResources().getString(R.string.manualinputtitle));
+        alert.setTitle(currentComponent.getI().getName());
 
 // Set an EditText view to get user input
 
         final EditText input = new EditText(getContext());
         alert.setView(input);
         input.setInputType(InputType.TYPE_CLASS_PHONE);
+        alert.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                currentComponent.getId();
+                Dao<FormulaComponent, Integer> dao = roHelper.getFormulaComponentDao(getContext());
+                try {
+                    dao.delete(currentComponent);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                remove(currentComponent);
+                notifyDataSetInvalidated();
+            }
+        });
+
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
@@ -136,15 +107,13 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
                     return;
                 }
                 currentComponent.setBp(Float.parseFloat(value) / 100f);
+                notifyDataSetChanged();
             }
         });
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
             }
         });
         alert.show();
     }
-
-
 }

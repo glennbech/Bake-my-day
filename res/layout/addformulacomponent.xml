@@ -38,6 +38,9 @@
         <Button android:id="@+id/btnAddComponent" android:text="@string/save" android:layout_width="fill_parent"
                 android:layout_weight="0.5" android:enabled="false"
                 android:layout_height="wrap_content"/>
+        <Button android:id="@+id/newIngredientButton" android:text="@string/addIngredient" android:layout_width="fill_parent"
+                android:layout_weight="0.5" android:enabled="true"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <View android:background="#333333" android:layout_width="fill_parent" android:layout_height="1px"

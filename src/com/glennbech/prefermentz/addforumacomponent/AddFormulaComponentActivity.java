@@ -1,6 +1,7 @@
 package com.glennbech.prefermentz.addforumacomponent;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.glennbech.prefermentz.R;
+import com.glennbech.prefermentz.ingredient.NewIngredientActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.model.FormulaComponent;
 import com.glennbech.prefermentz.model.Ingredient;
@@ -38,6 +40,12 @@ public class AddFormulaComponentActivity extends Activity {
                 tv.setText(currentIngredient.getName());
                 View btnSave = findViewById(R.id.btnAddComponent);
                 btnSave.setEnabled(true);
+            }
+        });
+
+        findViewById(R.id.newIngredientButton).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivityForResult((new Intent().setClass(AddFormulaComponentActivity.this, NewIngredientActivity.class)), 0);
             }
         });
 
