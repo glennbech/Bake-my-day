@@ -67,8 +67,6 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
             for (Formula f : formulas) {
                 f.loadFormulaComponents(this);
             }
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

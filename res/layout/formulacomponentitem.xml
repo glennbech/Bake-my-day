@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:orientation="vertical">
+              android:layout_height="wrap_content" android:orientation="vertical">
 
-    <TextView android:id="@+id/ingredientName" android:layout_height="wrap_content" android:layout_width="wrap_content"
-            android:layout_alignParentTop="true"/>
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
 
-    <TextView android:id="@+id/currentValue" android:layout_height="wrap_content" android:layout_width="wrap_content"
-              android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
+        <TextView android:id="@+id/ingredientName" android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:layout_alignParentTop="true"/>
 
-    <SeekBar android:id="@+id/seekbar" android:layout_width="fill_parent" android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"/>
+        <TextView android:id="@+id/currentValue" android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent" android:orientation="horizontal"
+                  android:layout_height="wrap_content">
+
+        <Button android:id="@+id/enterbpvaluebutton" android:text=" 123 " android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_weight="1"/>
+
+        <SeekBar android:id="@+id/seekbar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+        <Button android:id="@+id/deletecomponentbutton" android:text=" X " android:layout_width="fill_parentgtmh"
+                android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>
