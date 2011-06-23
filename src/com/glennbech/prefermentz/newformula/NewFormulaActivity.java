@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import com.glennbech.prefermentz.R;
+import com.glennbech.prefermentz.formuladetails.FormulaDetailsActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.persistence.RecipeOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -32,8 +33,9 @@ public class NewFormulaActivity extends Activity {
                 Dao<Formula, String> dao = r.getFormalaDao(NewFormulaActivity.this);
                 try {
                     dao.create(f);
-                    setResult(RESULT_OK, new Intent().putExtra(Formula.class.getName(), f));
-                    finish();
+                    Intent intent = new Intent().setClass(NewFormulaActivity.this, FormulaDetailsActivity.class);
+                    intent.putExtra(Formula.class.getName(), f);
+                    startActivity(intent);
                 } catch (SQLException e1) {
                     throw new RuntimeException();
                 }

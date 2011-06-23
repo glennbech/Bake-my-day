@@ -9,6 +9,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.glennbech.prefermentz.R;
 import com.glennbech.prefermentz.model.Recipe;
+import com.glennbech.prefermentz.model.RecipeComponent;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Glenn Bech
@@ -57,7 +61,9 @@ public class RecipeActivity extends Activity {
         TextView tv = (TextView) findViewById(R.id.recipeTitle);
         tv.setText(recipe.getFormula().getName());
 
-        recipeComponentListAdapter = new RecipeComponentListAdapter(this, recipe.getRecipeComponents(RecipeActivity.this));
+        List<RecipeComponent> recipeComponents = recipe.getRecipeComponents(RecipeActivity.this);
+        Collections.sort(recipeComponents);
+        recipeComponentListAdapter = new RecipeComponentListAdapter(this, recipeComponents);
         SeekBar sbFlour = (SeekBar) findViewById(R.id.flourWeight);
         sbFlour.setProgress((int) (100f * recipe.getTotalFlourWeight() / MAX_FLOUR));
         ListView lv = (ListView) findViewById(R.id.recipeingredientlist);

@@ -21,6 +21,7 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Glenn Bech
@@ -58,7 +59,6 @@ public class FormulaDetailsActivity extends Activity {
                 startActivityForResult(i, 1);
             }
         });
-
 
     }
 
@@ -98,7 +98,9 @@ public class FormulaDetailsActivity extends Activity {
         }
 
         ListView lv = (ListView) findViewById(R.id.lvFormula);
-        lv.setAdapter(new FormulaComponentListAdapter(this, formula.getFormulaComponentList()));
+        List<FormulaComponent> formulaComponentList = formula.getFormulaComponentList();
+        Collections.sort(formulaComponentList);
+        lv.setAdapter(new FormulaComponentListAdapter(this, formulaComponentList));
 
         TextView tv = (TextView) findViewById(R.id.formulaName);
         tv.setText(formula.getName());

@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-sdk android:minSdkVersion="7"/>
+    <supports-screens android:largeScreens="true"/>
 
     <application android:label="Bake my day" android:icon="@drawable/icon" android:debuggable="true">
 

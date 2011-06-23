@@ -3,7 +3,7 @@ package com.glennbech.prefermentz.model;
 /**
  * @author Glenn Bech
  */
-public class RecipeComponent {
+public class RecipeComponent implements Comparable<RecipeComponent> {
 
     private Ingredient i;
     private float weight;
@@ -37,6 +37,17 @@ public class RecipeComponent {
                 "i=" + i +
                 ", weight=" + weight +
                 '}';
+    }
+
+
+    public int compareTo(RecipeComponent o) {
+        if (o == null) {
+            throw new RuntimeException();
+        }
+        if (o.getWeight() == getWeight()) {
+            return 0;
+        }
+        return o.getWeight() > getWeight() ? 1 : -1;
     }
 }
 
