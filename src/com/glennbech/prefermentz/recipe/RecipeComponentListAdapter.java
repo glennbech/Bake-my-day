@@ -46,6 +46,9 @@ public class RecipeComponentListAdapter extends ArrayAdapter<RecipeComponent> {
         final TextView ingredientWeight = (TextView) v.findViewById(R.id.recipingredientweight);
         ingredientWeight.setText(f.format(rc.getWeight() / (useMetric ? 1f : ozFactor)) + unitName);
 
+        final TextView ingredientBp = (TextView) v.findViewById(R.id.recipeingredientpercent);
+        ingredientBp.setText("(" + f.format(rc.getFc().getBp() * 100) + "%)");
+
         return v;
     }
 }

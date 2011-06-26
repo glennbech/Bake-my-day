@@ -31,10 +31,8 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        if (v == null) {
-            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.formulacomponentitem, null);
-        }
+        LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        v = vi.inflate(R.layout.formulacomponentitem, null);
 
         final TextView tvCurrentValue = (TextView) v.findViewById(R.id.currentValue);
         final FormulaComponent currentComponent = getItem(position);
@@ -43,10 +41,6 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
         TextView ingredientName = (TextView) v.findViewById(R.id.ingredientName);
         ingredientName.setText(currentComponent.getI().getName());
 
-        final SeekBar sb = (SeekBar) v.findViewById(R.id.seekbar);
-        int progress = (int) (currentComponent.getBp() * 100);
-        sb.setProgress(progress);
-
         v.findViewById(R.id.enterbpvaluebutton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 showAlert(currentComponent);
@@ -54,19 +48,6 @@ public class FormulaComponentListAdapter extends ArrayAdapter<FormulaComponent> 
             }
         });
 
-
-        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                currentComponent.setBp(progress / 100f);
-                tvCurrentValue.setText(Float.toString(currentComponent.getBp() * 100) + "%");
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
         return v;
     }
 

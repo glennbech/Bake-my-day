@@ -23,6 +23,8 @@ import com.j256.ormlite.dao.Dao;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -71,6 +73,11 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
             throw new RuntimeException(e);
         }
 
+        Collections.sort(formulas, new Comparator<Formula>() {
+            public int compare(Formula o1, Formula o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
         ListView lv = (ListView) findViewById(R.id.formulaList);
         lv.setAdapter(new FormulaListAdapter(this, formulas));
 

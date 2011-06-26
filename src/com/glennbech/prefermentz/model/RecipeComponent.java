@@ -7,12 +7,13 @@ public class RecipeComponent implements Comparable<RecipeComponent> {
 
     private Ingredient i;
     private float weight;
+    private FormulaComponent fc;
 
-    public RecipeComponent(Ingredient i, float weight) {
+    public RecipeComponent(FormulaComponent fc, Ingredient i, float weight) {
         this.i = i;
         this.weight = weight;
+        this.fc = fc;
     }
-
 
     public Ingredient getI() {
         return i;
@@ -30,6 +31,13 @@ public class RecipeComponent implements Comparable<RecipeComponent> {
         this.weight = weight;
     }
 
+    public FormulaComponent getFc() {
+        return fc;
+    }
+
+    public void setFc(FormulaComponent fc) {
+        this.fc = fc;
+    }
 
     @Override
     public String toString() {

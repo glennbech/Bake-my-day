@@ -71,6 +71,22 @@ public class FormulaComponent implements Serializable, Comparable<FormulaCompone
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FormulaComponent)) return false;
+
+        FormulaComponent that = (FormulaComponent) o;
+
+        if (id != that.id) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
     public int compareTo(FormulaComponent o) {
         if (o == null) {
             throw new NullPointerException();

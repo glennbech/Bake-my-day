@@ -59,7 +59,6 @@ public class FormulaDetailsActivity extends Activity {
                 startActivityForResult(i, 1);
             }
         });
-
     }
 
     @Override

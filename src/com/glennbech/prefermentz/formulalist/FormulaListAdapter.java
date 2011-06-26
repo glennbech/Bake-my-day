@@ -36,10 +36,6 @@ public class FormulaListAdapter extends ArrayAdapter<Formula> {
         TextView nameView = (TextView) v.findViewById(R.id.name);
         nameView.setText(formula.getName());
 
-        TextView countView = (TextView) v.findViewById(R.id.ingredientCount);
-        String countString = getContext().getResources().getString(R.string.ingredientCount);
-        countView.setText(countString + " " + formula.getFormulaComponentList().size());
-
         return v;
     }
 

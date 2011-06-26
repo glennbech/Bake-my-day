@@ -97,7 +97,7 @@ public class Recipe implements Serializable {
             if (fComponent.getI().isFlour()) {
                 bpFlourTotal += fComponent.getBp();
             }
-            list.add(new RecipeComponent(fComponent.getI(), totalFlourWeight * fComponent.getBp() ));
+            list.add(new RecipeComponent(fComponent, fComponent.getI(), totalFlourWeight * fComponent.getBp() ));
         }
         if (bpFlourTotal != 1.0) {
 //            throw new IllegalArgumentException(bpFlourTotal + "% flours. Should add up to 100% " + formula);
