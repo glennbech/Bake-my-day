@@ -2,6 +2,7 @@ package com.glennbech.prefermentz.formulalist;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.glennbech.prefermentz.R;
 import com.glennbech.prefermentz.formuladetails.FormulaDetailsActivity;
 import com.glennbech.prefermentz.model.Formula;
@@ -46,6 +48,9 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
                 startActivityForResult(new Intent().setClass(FormulaListActivity.this, NewFormulaActivity.class), 1);
             }
         });
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "ChopinScript.otf");
+        ((TextView) findViewById(R.id.titlebar)).setTypeface(font);
     }
 
 

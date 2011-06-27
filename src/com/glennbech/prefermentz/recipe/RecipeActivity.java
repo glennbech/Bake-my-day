@@ -3,6 +3,7 @@ package com.glennbech.prefermentz.recipe;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ public class RecipeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe);
+            Typeface font = Typeface.createFromAsset(getAssets(), "ChopinScript.otf");
+        ((TextView) findViewById(R.id.recipeTitle)).setTypeface(font);
 
     }
 
