@@ -1,5 +1,7 @@
 package com.glennbech.prefermentz.formulalist;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -9,15 +11,11 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.glennbech.prefermentz.R;
 import com.glennbech.prefermentz.formuladetails.FormulaDetailsActivity;
 import com.glennbech.prefermentz.model.Formula;
 import com.glennbech.prefermentz.model.Recipe;
-import com.glennbech.prefermentz.newformula.NewFormulaActivity;
 import com.glennbech.prefermentz.persistence.RecipeOpenHelper;
 import com.glennbech.prefermentz.recipe.RecipeActivity;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -45,7 +43,13 @@ public class FormulaListActivity extends OrmLiteBaseActivity<RecipeOpenHelper> {
         View v = findViewById(R.id.newformulabutton);
         v.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                startActivityForResult(new Intent().setClass(FormulaListActivity.this, NewFormulaActivity.class), 1);
+                Context c = FormulaListActivity.this;
+                AlertDialog.Builder alert = new AlertDialog.Builder(c);
+                alert.setTitle("Jalls");
+                LinearLayout linearLayout = new LinearLayout(FormulaListActivity.this);
+                linearLayout.addView(new Button(c));
+                 alert.show();
+                //startActivityForResult(new Intent().setClass(FormulaListActivity.this, NewFormulaActivity.class), 1);
             }
         });
 

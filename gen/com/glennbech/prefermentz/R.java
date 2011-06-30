@@ -12,12 +12,14 @@ public final class R {
     }
     public static final class drawable {
         public static final int add=0x7f020000;
-        public static final int bottom=0x7f020001;
-        public static final int edit=0x7f020002;
-        public static final int icon=0x7f020003;
-        public static final int paper=0x7f020004;
-        public static final int papertile=0x7f020005;
-        public static final int top=0x7f020006;
+        public static final int back=0x7f020001;
+        public static final int background=0x7f020002;
+        public static final int bottom=0x7f020003;
+        public static final int edit=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int paper=0x7f020006;
+        public static final int papertile=0x7f020007;
+        public static final int top=0x7f020008;
     }
     public static final class id {
         public static final int bakersPercentage=0x7f080001;
@@ -59,7 +61,7 @@ public final class R {
         public static final int recipeingredientname=0x7f08002f;
         public static final int recipeingredientpercent=0x7f080030;
         public static final int recipingredientweight=0x7f08002e;
-        public static final int rulertop=0x7f080018;
+        public static final int rulertop=0x7f080017;
         public static final int saltWeightValue=0x7f080024;
         public static final int sbFats=0x7f080023;
         public static final int sbFlourWegiht=0x7f08001f;
@@ -70,7 +72,7 @@ public final class R {
         public static final int selectedIngredient=0x7f080000;
         public static final int titlePreferment=0x7f080007;
         public static final int titlebar=0x7f080019;
-        public static final int topbar=0x7f080017;
+        public static final int topbar=0x7f080018;
         public static final int yeastWeightValue=0x7f080026;
     }
     public static final class layout {
